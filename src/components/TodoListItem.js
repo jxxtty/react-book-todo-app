@@ -6,8 +6,8 @@ import {
 import './TodoListItem.scss';
 import cn from 'classnames'; // cn import
 
-const TodoListItem = ({todo}) => { // props로 todo를 받는다.
-    const {text, checked} = todo;
+const TodoListItem = ({todo, onRemove}) => { // props로 todo를 받는다.
+    const {id, text, checked} = todo;
     return (
         <div className={"TodoListItem"}>
             <div className={cn('checkbox', {checked})}>
@@ -15,7 +15,7 @@ const TodoListItem = ({todo}) => { // props로 todo를 받는다.
                 <div className={"text"}>{text}</div>
             </div>
 
-            <div className={"remove"}>
+            <div className={"remove"} onClick={() => onRemove(id)}>
                 <MdRemoveCircleOutline/>
             </div>
         </div>

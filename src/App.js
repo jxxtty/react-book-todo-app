@@ -40,10 +40,18 @@ const App = () => {
         [todos]
     );
 
+    // filter함수를 이용해서 id로 항목 지우기
+    const onRemove = useCallback(
+        id => {
+            setTodos(todos.filter(todo => todo.id !== id));
+        },
+        [todos]
+    );
+
     return (
         <TodoTemplate>
             <TodoInsert onInsert={onInsert}/>
-            <TodoList todos={todos}/> {/* TodoList에서 'todos'를 props로 받아 처리하게 한다. */}
+            <TodoList todos={todos} onRemove={onRemove}/> {/* TodoList에서 'todos'를 props로 받아 처리하게 한다. */} {/* onRemove또한 props로  */}
         </TodoTemplate>
     )
 }
