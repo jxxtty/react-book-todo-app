@@ -5,6 +5,7 @@ import {
 } from "react-icons/md";
 import './TodoListItem.scss';
 import cn from 'classnames'; // cn import
+import React from "react";
 
 const TodoListItem = ({todo, onRemove, onToggle}) => { // props로 todo를 받는다.
     const {id, text, checked} = todo;
@@ -22,4 +23,4 @@ const TodoListItem = ({todo, onRemove, onToggle}) => { // props로 todo를 받�
     );
 }
 
-export default TodoListItem
+export default React.memo(TodoListItem) // React.memo로 감싸준다 -> TodoListItem 컴포넌트는 todo, onRemove, onToggle이 바뀌지않으면 리렌더링 하지 않는다.
